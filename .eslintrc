@@ -1,0 +1,23 @@
+{
+    "parser": "babel-eslint",
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true,
+        "arrowFunctions": true,
+        "blockBindings": true,
+        "classes": true,
+        "defaultParams": true,
+        "objectLiteralComputedProperties": true,
+        "objectLiteralShorthandMethods": true,
+        "objectLiteralShorthandProperties": true,
+        "restParams": true,
+        "spread": true,
+        "templateStrings": true
+    },
+    "env": {
+        "es6"
+    },
+    "rules": {
+        "strict": 0
+    }
+}
