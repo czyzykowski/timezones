@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import TimezoneForm from 'components/timezone-form';
 import {addTimezone} from 'modules/timezones';
 
-
 class TimezoneNew extends Component {
 
   save(timezone) {
@@ -23,7 +22,7 @@ class TimezoneNew extends Component {
     const timezone = {
       name: '',
       city: '',
-      time_difference: 0,
+      time_difference: 0 // eslint-disable-line camelcase
     };
     return (
       <TimezoneForm
@@ -37,10 +36,10 @@ class TimezoneNew extends Component {
 }
 
 export default connect(
-  (state) => {
+  state => {
     return {
       loading: state.timezones.loading,
-      token: state.auth.token,
+      token: state.auth.token
     };
   }
 )(TimezoneNew);

@@ -5,7 +5,6 @@ import Row from 'components/row';
 import Clock from 'components/clock';
 import {border} from 'styles';
 
-
 class Timezone extends Component {
   constructor(props) {
     super(props);

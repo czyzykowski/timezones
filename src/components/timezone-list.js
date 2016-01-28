@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 
-import Clock from 'components/clock';
 import Column from 'components/column';
 import Row from 'components/row';
 import Timezone from 'components/timezone';
 import TimezoneFilter from 'components/timezone-filter';
 
-
 class TimezoneList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      filter: '',
-    };
+    this.state = {filter: ''};
   }
 
   filterChange({target}) {
@@ -38,14 +34,12 @@ class TimezoneList extends Component {
       return (
         <TimezoneFilter onChange={this.filterChange.bind(this)}/>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
-
   render() {
-    const nodes = this.filteredTimezones().map((timezone) => (
+    const nodes = this.filteredTimezones().map(timezone => (
       <Timezone key={timezone.id} {...timezone} admin={this.props.admin}/>
     ));
 

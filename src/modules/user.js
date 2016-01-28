@@ -9,7 +9,6 @@ const initialState = {
   loaded: false
 };
 
-
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case USER_LOADING:
@@ -21,25 +20,24 @@ export default function reducer(state = initialState, action) {
       return {
         loaded: true,
         loading: false,
-        role: action.result,
+        role: action.result
       };
     case USER_ERROR:
       return {
         loaded: false,
         loading: false,
-        error: action.error,
+        error: action.error
       };
     case LOGOUT:
       return initialState;
     default:
       return state;
   }
-};
-
+}
 
 export function loadUser(token) {
   return {
     types: [USER_LOADING, USER_SUCCESS, USER_ERROR],
-    promise: apiClient.userRole(token),
+    promise: apiClient.userRole(token)
   };
 }

@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import Row from 'components/row';
 import Column from 'components/column';
 
-
 class NotFound extends Component {
 
   render() {

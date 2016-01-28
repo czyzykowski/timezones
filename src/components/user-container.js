@@ -6,7 +6,6 @@ import Row from 'components/row';
 import Column from 'components/column';
 import {deleteUser} from 'modules/users';
 
-
 class UserContainer extends Component {
 
   deleteUser(user, event) {
@@ -32,7 +31,7 @@ class UserContainer extends Component {
 
   newUserButton() {
     const children = this.props.children;
-    if (!children || children.length == 0) {
+    if (!children || children.length === 0) {
       return (
         <Link className="button small radius right" to="/users/new">New user</Link>
       );
@@ -65,10 +64,10 @@ class UserContainer extends Component {
 }
 
 export default connect(
-  (state) => {
+  state => {
     return {
       users: state.users.users,
-      token: state.auth.token,
+      token: state.auth.token
     };
   }
 )(UserContainer);

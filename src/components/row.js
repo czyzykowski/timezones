@@ -8,4 +8,4 @@ export default class Row extends React.Component {
       </div>
     );
   }
-};
+}

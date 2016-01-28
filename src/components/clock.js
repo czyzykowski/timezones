@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import moment from 'moment';
 
-const LOCAL_TIME_DIFFERENCE = -4;
-
+const LOCAL_TIME_DIFFERENCE = -3;
 
 class Clock extends Component {
   constructor(props) {
@@ -20,7 +19,7 @@ class Clock extends Component {
 
   tick() {
     const time = this.renderTime();
-    this.setState({time: time});
+    this.setState({time});
   }
 
   renderTime() {

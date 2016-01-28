@@ -6,9 +6,8 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 
 const initialState = {
-  loggingIn: false,
+  loggingIn: false
 };
-
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -34,7 +33,6 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
-
 
 export function login(username, password) {
   return {

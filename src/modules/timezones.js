@@ -20,44 +20,43 @@ export default function reducer(state = initialState, action) {
       return {
         timezones: state.timezones,
         loading: true,
-        loaded: state.loaded,
+        loaded: state.loaded
       };
     case TIMEZONE_RESET:
       return {
         timezones: action.result,
         loading: false,
-        loaded: true,
+        loaded: true
       };
     case TIMEZONE_ADD:
       return {
         loading: false,
         timezones: state.timezones.concat(action.result),
-        loaded: state.loaded,
+        loaded: state.loaded
       };
     case TIMEZONE_SAVE:
       return {
         loading: false,
-        timezones: state.timezones.map((timezone) => {
+        timezones: state.timezones.map(timezone => {
           if (timezone.id === action.result.id) {
             return action.result;
-          } else {
-            return timezone;
           }
+          return timezone;
         }),
-        loaded: state.loaded,
+        loaded: state.loaded
       };
     case TIMEZONE_DELETE:
       return {
         loading: false,
         timezones: state.timezones.filter(timezone => timezone.id !== action.result.id),
-        loaded: state.loaded,
+        loaded: state.loaded
       };
     case TIMEZONE_ERROR:
       return {
         loading: false,
         error: action.error,
         timezones: state.timezones,
-        loaded: state.loaded,
+        loaded: state.loaded
       };
     case LOGOUT:
       return initialState;
@@ -69,27 +68,27 @@ export default function reducer(state = initialState, action) {
 export function resetTimezones(token) {
   return {
     types: [TIMEZONE_LOADING, TIMEZONE_RESET, TIMEZONE_ERROR],
-    promise: apiClient.resetTimezones(token),
+    promise: apiClient.resetTimezones(token)
   };
 }
 
 export function addTimezone(token, timezone) {
   return {
     types: [TIMEZONE_LOADING, TIMEZONE_ADD, TIMEZONE_ERROR],
-    promise: apiClient.addTimezone(token, timezone),
+    promise: apiClient.addTimezone(token, timezone)
   };
 }
 
 export function saveTimezone(token, timezone) {
   return {
     types: [TIMEZONE_LOADING, TIMEZONE_SAVE, TIMEZONE_ERROR],
-    promise: apiClient.editTimezone(token, timezone),
+    promise: apiClient.editTimezone(token, timezone)
   };
 }
 
 export function deleteTimezone(token, timezone) {
   return {
     types: [TIMEZONE_LOADING, TIMEZONE_DELETE, TIMEZONE_ERROR],
-    promise: apiClient.deleteTimezone(token, timezone),
+    promise: apiClient.deleteTimezone(token, timezone)
   };
 }

@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import UserForm from 'components/user-form';
 import {addUser} from 'modules/users';
 
-
 class UserNew extends Component {
 
   save(user) {
@@ -22,7 +21,7 @@ class UserNew extends Component {
   render() {
     const user = {
       username: '',
-      is_staff: false,
+      is_staff: false // eslint-disable-line camelcase
     };
     return (
       <UserForm
@@ -35,10 +34,10 @@ class UserNew extends Component {
 }
 
 export default connect(
-  (state) => {
+  state => {
     return {
       loading: state.users.loading,
-      token: state.auth.token,
+      token: state.auth.token
     };
   }
 )(UserNew);

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Route} from 'react-router';
 
 import Application from 'components/application';
@@ -14,8 +14,7 @@ import UserContainer from 'components/user-container';
 import UserEdit from 'components/user-edit';
 import UserNew from 'components/user-new';
 
-
-export default (store) => {
+export default store => {
   const requireAuthentication = (nextState, replaceState) => {
     const {auth} = store.getState();
     if (!auth.token) {
@@ -38,23 +37,22 @@ export default (store) => {
   };
 
   return (
-    <Route path='/' component={Application}>
+    <Route path="/" component={Application}>
       <Route onEnter={requireAuthentication}>
-        <Route path='/loading' component={Loading}/>
-        <Route path='/timezones' component={TimezoneContainer} onEnter={requireTimezonesLoaded}>
-          <Route path='/timezone/:id' component={TimezoneDetail}/>
-          <Route path='/timezone/:id/edit' component={TimezoneEdit}/>
-          <Route path='/timezones/new' component={TimezoneNew}/>
+        <Route path="/loading" component={Loading}/>
+        <Route path="/timezones" component={TimezoneContainer} onEnter={requireTimezonesLoaded}>
+          <Route path="/timezone/:id" component={TimezoneDetail}/>
+          <Route path="/timezone/:id/edit" component={TimezoneEdit}/>
+          <Route path="/timezones/new" component={TimezoneNew}/>
         </Route>
-        <Route path='/users' component={UserContainer} onEnter={requireUsersLoaded}>
-          <Route path='/user/:id/edit' component={UserEdit}/>
-          <Route path='/users/new' component={UserNew}/>
+        <Route path="/users" component={UserContainer} onEnter={requireUsersLoaded}>
+          <Route path="/user/:id/edit" component={UserEdit}/>
+          <Route path="/users/new" component={UserNew}/>
         </Route>
       </Route>
-      <Route path='/login' component={Login}/>
-      <Route path='/logout' component={Logout}/>
-      <Route path='*' component={NotFound} status={404}/>
+      <Route path="/login" component={Login}/>
+      <Route path="/logout" component={Logout}/>
+      <Route path="*" component={NotFound} status={404}/>
     </Route>
   );
 };
-

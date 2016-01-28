@@ -5,7 +5,6 @@ import {find, propEq} from 'ramda';
 import TimezoneForm from 'components/timezone-form';
 import {saveTimezone} from 'modules/timezones';
 
-
 class TimezoneEdit extends Component {
   constructor(props) {
     super(props);
@@ -47,11 +46,11 @@ class TimezoneEdit extends Component {
 }
 
 export default connect(
-  (state) => {
+  state => {
     return {
       timezones: state.timezones.timezones,
       loading: state.timezones.loading,
-      token: state.auth.token,
+      token: state.auth.token
     };
   }
 )(TimezoneEdit);

@@ -4,6 +4,20 @@
     "name": "Łukasz Czyżykowski",
     "email": "emlukasz.czyzykowski@gmail.com"
   },
+  "xo": {
+    "esnext": true,
+    "space": 2,
+    "plugins": [
+      "react"
+    ],
+    "env": [
+      "node",
+      "browser"
+    ],
+    "rules": {
+      "react/jsx-uses-react": 2
+    }
+  },
   "private": true,
   "version": "0.1.0",
   "dependencies": {
@@ -29,6 +43,7 @@
     "redux": "^3.0.4",
     "redux-router": "^1.0.0-beta3",
     "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.12.1"
+    "webpack-dev-server": "^1.12.1",
+    "eslint-plugin-react": "^3.14.0"
   }
 }

@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 
-
 class Navigation extends Component {
 
   render() {
-    const links = this.props.links.map((link) => {
-      return (
+    const links = this.props.links.map(link => (
         <li key={link.name}>
           <Link to={link.to}>{link.name}</Link>
         </li>
-      );
-    });
+      )
+    );
 
     return (
       <div className="fixed">

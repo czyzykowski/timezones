@@ -4,7 +4,6 @@ import {clone} from 'ramda';
 import Row from 'components/row';
 import Column from 'components/column';
 
-
 class UserForm extends Component {
 
   constructor(props) {
@@ -17,7 +16,7 @@ class UserForm extends Component {
       id: this.props.user.id,
       username: this.props.user.username,
       password: this.props.user.password,
-      is_staff: this.props.user.is_staff,
+      is_staff: this.props.user.is_staff // eslint-disable-line camelcase
     };
   }
 
@@ -27,7 +26,7 @@ class UserForm extends Component {
 
   save(event) {
     event.preventDefault();
-    let user = clone(this.state);
+    const user = clone(this.state);
     user.id = this.props.user.id;
     this.props.onSave(user);
   }

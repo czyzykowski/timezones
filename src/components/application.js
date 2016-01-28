@@ -5,11 +5,10 @@ import Row from 'components/row';
 import Column from 'components/column';
 import Navigation from 'components/navigation';
 
-
 class Application extends Component {
 
   loggedIn() {
-    return !!this.props.auth.token;
+    return Boolean(this.props.auth.token);
   }
 
   render() {
@@ -17,9 +16,9 @@ class Application extends Component {
 
     if (this.loggedIn()) {
       if (this.props.role === 'admin') {
-        links.push({name: "Users", to: '/users'});
+        links.push({name: 'Users', to: '/users'});
       }
-      links.push({name: "Logout", to: '/logout'});
+      links.push({name: 'Logout', to: '/logout'});
     }
 
     return (
@@ -39,9 +38,9 @@ class Application extends Component {
   }
 }
 
-export default connect((state) => {
+export default connect(state => {
   return {
     auth: state.auth,
-    role: state.user.role,
+    role: state.user.role
   };
 })(Application);

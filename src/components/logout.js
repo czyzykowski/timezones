@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 
 import {logout} from 'modules/auth';
 
-
 class Logout extends Component {
 
   componentWillMount() {
@@ -17,6 +16,4 @@ class Logout extends Component {
   }
 }
 
-export default connect((state) => {
-  return {};
-})(Logout);
+export default connect()(Logout);

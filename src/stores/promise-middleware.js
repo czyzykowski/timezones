@@ -1,6 +1,6 @@
-export default function promiseMiddleware({dispatch}) {
-  return (next) => {
-    return (action) => {
+export default function promiseMiddleware({dispatch, getState}) {
+  return next => {
+    return action => {
       if (typeof action === 'function') {
         return action(dispatch, getState);
       }
@@ -14,8 +14,8 @@ export default function promiseMiddleware({dispatch}) {
 
       next({...rest, type: REQUEST});
       return promise.then(
-        (result) => next({...rest, result, type: SUCCESS}),
-        (error) => next({...rest, error, type: FAILURE})
+        result => next({...rest, result, type: SUCCESS}),
+        error => next({...rest, error, type: FAILURE})
       );
     };
   };

@@ -3,7 +3,7 @@ import {prop, compose} from 'ramda';
 
 
 function extractError(response) {
-  throw response.data.non_field_errors.join("\n");
+  throw response.data.non_field_errors.join('\n');
 }
 
 function extractToken(response) {
@@ -17,7 +17,7 @@ function saveToken(token) {
 
 function headers(token) {
   return {
-    headers: {'Authorization': `Token ${token}`}
+    headers: {Authorization: `Token ${token}`}
   };
 }
 
@@ -25,7 +25,7 @@ const getData = prop('data');
 
 export default {
   resetTimezones(token) {
-    return axios.get('/api/timezones', headers(token)).then(getData);;
+    return axios.get('/api/timezones', headers(token)).then(getData);
   },
 
   addTimezone(token, timezone) {
@@ -41,7 +41,7 @@ export default {
   },
 
   resetUsers(token) {
-    return axios.get('/api/users', headers(token)).then(getData);;
+    return axios.get('/api/users', headers(token)).then(getData);
   },
 
   addUser(token, user) {
@@ -66,4 +66,4 @@ export default {
       .then(saveToken)
       .catch(extractError);
   }
-}
+};

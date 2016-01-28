@@ -5,7 +5,6 @@ import {find, propEq} from 'ramda';
 import {saveUser} from 'modules/users';
 import UserForm from 'components/user-form';
 
-
 class UserEdit extends Component {
 
   constructor(props) {
@@ -50,11 +49,11 @@ class UserEdit extends Component {
 }
 
 export default connect(
-  (state) => {
+  state => {
     return {
       users: state.users.users,
       loading: state.users.loading,
-      token: state.auth.token,
+      token: state.auth.token
     };
   }
 )(UserEdit);

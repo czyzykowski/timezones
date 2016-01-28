@@ -4,9 +4,7 @@ import Column from 'components/column';
 import Row from 'components/row';
 import {border} from 'styles';
 
-
 class TimezoneFilter extends Component {
-
   render() {
     return (
       <Row>

@@ -5,7 +5,6 @@ import Row from 'components/row';
 import Column from 'components/column';
 import {login} from 'modules/auth';
 
-
 class Login extends Component {
   constructor() {
     super();
@@ -39,12 +38,12 @@ class Login extends Component {
   render() {
     let error = null;
     if (this.props.auth.loginError) {
-        error = (<small className="error">{this.props.auth.loginError}</small>);
+      error = (<small className="error">{this.props.auth.loginError}</small>);
     }
     return (
       <form role="form" action="">
         <Row>
-          <Column size='large-6' options='centered'>
+          <Column size="large-6" options="centered">
             <h1 style={{marginTop: '2em'}}>Login to Timezones</h1>
             {error}
             <label>Username:
@@ -53,15 +52,15 @@ class Login extends Component {
           </Column>
         </Row>
         <Row>
-          <Column size='large-6' options='centered'>
+          <Column size="large-6" options="centered">
             <label>Password:
               <input type="password" onChange={this.handlePasswordChange.bind(this)} value={this.state.password} />
             </label>
           </Column>
         </Row>
         <Row>
-          <Column size='large-6' options='centered'>
-            <button type="submit" className="button small" 
+          <Column size="large-6" options="centered">
+            <button type="submit" className="button small"
                     disabled={this.props.auth.loggingIn}
                     onClick={this.login.bind(this)}>
               Login
@@ -74,7 +73,7 @@ class Login extends Component {
 }
 
 export default connect(
-  (state) => {
+  state => {
     return {
       auth: state.auth
     };

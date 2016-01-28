@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import {find, propEq} from 'ramda';
+import {compose, head, filter, propEq} from 'ramda';
 
 import {deleteTimezone} from 'modules/timezones';
 import Clock from 'components/clock';
 import {border} from 'styles';
-
-
-const findById = find(propEq('id'));
-
 
 class TimezoneDetail extends Component {
 
@@ -20,14 +16,16 @@ class TimezoneDetail extends Component {
       return `${diff} ${hours} ahead of GMT`;
     } else if (diff < 0) {
       return `${-diff} ${hours} behind of GMT`;
-    } else {
-      return 'exactly as GMT';
     }
+
+    return 'exactly as GMT';
   }
 
   findTimezone() {
-    const id = parseInt(this.props.params.id);
-    return findById(id, this.props.timezones);
+    const {params, timezones} = this.props;
+    const id = parseInt(params.id, 10);
+    const find = compose(head, filter(propEq('id', id)));
+    return find(timezones);
   }
 
   componentWillMount() {
@@ -50,10 +48,10 @@ class TimezoneDetail extends Component {
     return (
       <div>
         <div style={{borderBottom: border, paddingBottom: '3em', marginBottom: '1em'}}>
-          <h1 style={{fontWeight: 'bold', fontSize: '4em', color: color, marginTop: '1em'}} className="text-center">{props.name}</h1>
+          <h1 style={{fontWeight: 'bold', fontSize: '4em', color, marginTop: '1em'}} className="text-center">{props.name}</h1>
           <h2 className="subheader text-center">{props.city}</h2>
           <div className="text-center">{this.timeDifference(props.time_difference)}</div>
-          <Clock timeDifference={props.time_difference} style={{fontSize: '8em', fontWeight: 'bold', color: color}}/>
+          <Clock timeDifference={props.time_difference} style={{fontSize: '8em', fontWeight: 'bold', color}}/>
         </div>
         <div className="right">
           <ul className="button-group even-2">
@@ -67,10 +65,10 @@ class TimezoneDetail extends Component {
 }
 
 export default connect(
-  (state) => {
+  state => {
     return {
       timezones: state.timezones.timezones,
-      token: state.auth.token,
+      token: state.auth.token
     };
   }
 )(TimezoneDetail);

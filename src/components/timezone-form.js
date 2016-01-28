@@ -4,7 +4,6 @@ import {clone} from 'ramda';
 import Row from 'components/row';
 import Column from 'components/column';
 
-
 class TimezoneForm extends Component {
 
   constructor(props) {
@@ -18,7 +17,7 @@ class TimezoneForm extends Component {
       id: this.props.timezone.id,
       name: this.props.timezone.name,
       city: this.props.timezone.city,
-      time_difference: this.props.timezone.time_difference
+      time_difference: this.props.timezone.time_difference // eslint-disable-line camelcase
     };
   }
 
@@ -28,7 +27,7 @@ class TimezoneForm extends Component {
 
   save(event) {
     event.preventDefault();
-    let timezone = clone(this.state);
+    const timezone = clone(this.state);
     timezone.id = this.props.timezone.id;
     this.props.onSave(timezone);
   }

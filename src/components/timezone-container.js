@@ -5,9 +5,7 @@ import Row from 'components/row';
 import Column from 'components/column';
 import TimezoneList from 'components/timezone-list';
 
-
 class TimezoneContainer extends Component {
-
   isAdmin() {
     return this.props.role === 'admin';
   }
@@ -27,10 +25,10 @@ class TimezoneContainer extends Component {
 }
 
 export default connect(
-  (state) => {
+  state => {
     return {
       timezones: state.timezones.timezones,
-      role: state.user.role,
+      role: state.user.role
     };
   }
 )(TimezoneContainer);

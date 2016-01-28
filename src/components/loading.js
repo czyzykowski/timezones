@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {find, propEq} from 'ramda';
 
 import Row from 'components/row';
 import Column from 'components/column';
 import {resetTimezones} from 'modules/timezones';
 import {resetUsers} from 'modules/users';
 import {loadUser} from 'modules/user';
-
 
 class Loading extends Component {
 
@@ -17,13 +15,13 @@ class Loading extends Component {
       name: 'User data',
       done: false,
       prop: 'userLoaded',
-      next: this.loadTimezones.bind(this),
+      next: this.loadTimezones.bind(this)
     }];
   }
 
   componentWillMount() {
     const {dispatch, token} = this.props;
-    dispatch(loadUser(token))
+    dispatch(loadUser(token));
   }
 
   loadTimezones(props) {
@@ -32,19 +30,19 @@ class Loading extends Component {
       name: 'Timezones',
       done: false,
       prop: 'timezonesLoaded',
-      next: props.role === 'admin' ? this.loadUsers.bind(this) : this.allLoaded.bind(this),
+      next: props.role === 'admin' ? this.loadUsers.bind(this) : this.allLoaded.bind(this)
     }
     );
     dispatch(resetTimezones(token));
   }
 
-  loadUsers(props) {
+  loadUsers() {
     const {dispatch, token} = this.props;
     this.items.push({
       name: 'Users',
       done: false,
       prop: 'usersLoaded',
-      next: this.allLoaded.bind(this),
+      next: this.allLoaded.bind(this)
     });
     dispatch(resetUsers(token));
   }
@@ -84,14 +82,14 @@ class Loading extends Component {
 }
 
 export default connect(
-  (state) => {
+  state => {
     return {
       timezonesLoaded: state.timezones.loaded,
       userLoaded: state.user.loaded,
       usersLoaded: state.users.loaded,
       role: state.user.role,
       loaded: [state.timezones.loaded, state.user.loaded],
-      token: state.auth.token,
+      token: state.auth.token
     };
   }
 )(Loading);
