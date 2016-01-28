@@ -27,26 +27,31 @@ care of this.
 
     $ npm install
 
-Third and last step is to prepare the database for Django app. By default it is
+Third step is to prepare the database for Django app. By default it is
 configured to use sqlite3.
 
     $ python manage.py migrate
+
+Last step is to create admin user, which will give access to the application:
+
+    $ python manage.py createsuperuser
 
 At that point (if everything went without any problems) the application is
 ready for start.
 
 ## Running the application
 
-Start Django server to handle API requests.
+Following command will run two processes required for the app to function
+properly:
 
-    $ python manage.py runserver
+ - Django backend server to handle API requests
+ - Webpack dev server, which will server all the front-end bits. With the help
+   of hot module replacement it will make sure the latest changes in the
+   front-end code are immediately shipped to the browser. It's really great dev
+   experience.
 
-Open another console and start webpack dev server, which will server all the
-front-end bits. With the help of hot module replacement it will make sure the
-latest changes in the front-end code are immediately shipped to the browser.
-It's really great dev experience.
 
-    $ grunt webpack-dev-server:start
+    $ honcho start
 
 Last bit is to open the browser and point it at http://localhost:8080/public/#/login
 
